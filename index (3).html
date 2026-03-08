@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>МойСайт</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --blue: #2563eb;
+      --purple: #7c3aed;
+      --dark: #0f172a;
+      --card-bg: #ffffff;
+      --bg: #f1f5f9;
+      --text: #1e293b;
+      --muted: #64748b;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+    }
+
+    /* ── HEADER ── */
+    header {
+      background: var(--dark);
+      color: white;
+      padding: 18px 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 20px rgba(0,0,0,0.4);
+    }
+
+    header h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: 22px;
+      letter-spacing: -0.5px;
+    }
+
+    header h1 span { color: #60a5fa; }
+
+    nav a {
+      color: #cbd5e1;
+      text-decoration: none;
+      margin-left: 28px;
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.3px;
+      transition: color 0.2s;
+    }
+
+    nav a:hover { color: #60a5fa; }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 88vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 60px 20px;
+      text-align: center;
+      background: linear-gradient(135deg, #1d4ed8 0%, #7c3aed 60%, #db2777 100%);
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      width: 600px; height: 600px;
+      background: rgba(255,255,255,0.04);
+      border-radius: 50%;
+      top: -150px; right: -150px;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      width: 400px; height: 400px;
+      background: rgba(255,255,255,0.04);
+      border-radius: 50%;
+      bottom: -100px; left: -100px;
+    }
+
+    .hero h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: 52px;
+      line-height: 1.15;
+      margin-bottom: 20px;
+      letter-spacing: -1px;
+    }
+
+    .hero p {
+      max-width: 560px;
+      font-size: 18px;
+      color: rgba(255,255,255,0.85);
+      margin-bottom: 36px;
+      font-weight: 300;
+    }
+
+    .btn {
+      background: white;
+      color: var(--blue);
+      padding: 14px 32px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 15px;
+      font-weight: 700;
+      font-family: 'Montserrat', sans-serif;
+      letter-spacing: 0.3px;
+      transition: all 0.25s;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    }
+
+    .btn:hover { transform: translateY(-2px) scale(1.04); background: #e0e7ff; }
+    .btn-outline {
+      background: transparent;
+      color: white;
+      border: 2px solid rgba(255,255,255,0.6);
+      margin-left: 12px;
+    }
+    .btn-outline:hover { background: rgba(255,255,255,0.12); color: white; }
+
+    /* ── SECTIONS ── */
+    .section {
+      padding: 80px 20px;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    .section-label {
+      text-align: center;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 12px;
+    }
+
+    .section h3 {
+      text-align: center;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 34px;
+      font-weight: 800;
+      margin-bottom: 48px;
+      letter-spacing: -0.5px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+    }
+
+    .card {
+      background: var(--card-bg);
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+      border: 1px solid #e2e8f0;
+      transition: all 0.25s;
+    }
+
+    .card:hover { transform: translateY(-6px); box-shadow: 0 12px 40px rgba(0,0,0,0.12); }
+
+    .card-icon {
+      width: 48px; height: 48px;
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px;
+      margin-bottom: 16px;
+    }
+
+    .card h4 {
+      margin-bottom: 8px;
+      color: var(--dark);
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 17px;
+    }
+
+    .card p { color: var(--muted); font-size: 14px; }
+
+    /* ── CONTACT ── */
+    .contact { text-align: center; }
+    .contact p { margin-bottom: 28px; color: var(--muted); max-width: 500px; margin-left: auto; margin-right: auto; }
+    .btn-dark { background: var(--dark); color: white; }
+    .btn-dark:hover { background: #1e293b; color: white; transform: translateY(-2px); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--dark);
+      color: #94a3b8;
+      text-align: center;
+      padding: 28px;
+      font-size: 13px;
+    }
+
+    /* ══════════════════════════════════
+       ADMIN PANEL
+    ══════════════════════════════════ */
+    #adminBtn {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      width: 52px; height: 52px;
+      border-radius: 50%;
+      background: var(--dark);
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-size: 22px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.35);
+      z-index: 999;
+      transition: transform 0.2s;
+    }
+    #adminBtn:hover { transform: scale(1.1); }
+
+    /* Modal overlay */
+    #adminModal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.55);
+      z-index: 1000;
+      backdrop-filter: blur(4px);
+      align-items: center;
+      justify-content: center;
+    }
+    #adminModal.open { display: flex; }
+
+    #adminPanel {
+      background: #0f172a;
+      color: #e2e8f0;
+      border-radius: 20px;
+      width: 92%;
+      max-width: 720px;
+      max-height: 80vh;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.6);
+      overflow: hidden;
+      border: 1px solid #1e293b;
+    }
+
+    .panel-header {
+      padding: 20px 24px;
+      background: #1e293b;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid #334155;
+    }
+
+    .panel-header h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 17px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .live-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: #22c55e;
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+
+    #closePanel {
+      background: none;
+      border: none;
+      color: #94a3b8;
+      font-size: 22px;
+      cursor: pointer;
+      line-height: 1;
+      transition: color 0.2s;
+    }
+    #closePanel:hover { color: white; }
+
+    .panel-toolbar {
+      padding: 14px 24px;
+      border-bottom: 1px solid #1e293b;
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .panel-toolbar button {
+      background: #1e293b;
+      border: 1px solid #334155;
+      color: #94a3b8;
+      padding: 7px 16px;
+      border-radius: 8px;
+      font-size: 13px;
+      cursor: pointer;
+      font-family: 'Inter', sans-serif;
+      transition: all 0.2s;
+    }
+
+    .panel-toolbar button:hover { background: #334155; color: white; }
+    .panel-toolbar button.active { background: var(--blue); color: white; border-color: var(--blue); }
+
+    #visitCount {
+      margin-left: auto;
+      font-size: 13px;
+      color: #64748b;
+    }
+
+    #visitCount span { color: #22c55e; font-weight: 600; }
+
+    /* Table */
+    .table-wrap { overflow-y: auto; flex: 1; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+
+    thead th {
+      background: #0f172a;
+      color: #475569;
+      font-weight: 600;
+      text-transform: uppercase;
+      font-size: 11px;
+      letter-spacing: 1px;
+      padding: 12px 20px;
+      text-align: left;
+      position: sticky;
+      top: 0;
+      border-bottom: 1px solid #1e293b;
+    }
+
+    tbody tr {
+      border-bottom: 1px solid #1e293b;
+      transition: background 0.15s;
+    }
+
+    tbody tr:hover { background: #1e293b; }
+
+    tbody td {
+      padding: 12px 20px;
+      color: #cbd5e1;
+      vertical-align: middle;
+    }
+
+    .ip-badge {
+      background: #1e3a5f;
+      color: #60a5fa;
+      padding: 3px 10px;
+      border-radius: 6px;
+      font-family: monospace;
+      font-size: 13px;
+    }
+
+    .country-flag { font-size: 18px; margin-right: 6px; }
+
+    .empty-state {
+      text-align: center;
+      padding: 60px 20px;
+      color: #475569;
+    }
+
+    .empty-state .icon { font-size: 48px; margin-bottom: 16px; }
+
+    /* Login screen */
+    #loginScreen {
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+    }
+
+    #loginScreen h3 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 20px;
+      margin-bottom: 8px;
+    }
+
+    #loginScreen p { color: #64748b; font-size: 14px; text-align: center; }
+
+    #pwdInput {
+      background: #1e293b;
+      border: 1px solid #334155;
+      color: white;
+      padding: 12px 18px;
+      border-radius: 10px;
+      font-size: 15px;
+      width: 100%;
+      max-width: 300px;
+      outline: none;
+      text-align: center;
+      letter-spacing: 3px;
+      font-family: 'Inter', sans-serif;
+    }
+
+    #pwdInput:focus { border-color: var(--blue); }
+
+    #loginBtn {
+      background: var(--blue);
+      color: white;
+      border: none;
+      padding: 12px 32px;
+      border-radius: 10px;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    #loginBtn:hover { background: #1d4ed8; }
+    #loginErr { color: #f87171; font-size: 13px; display: none; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .hero h2 { font-size: 36px; }
+      header { flex-direction: column; gap: 12px; padding: 16px 24px; }
+      nav a { margin: 0 10px; }
+      #adminPanel { max-height: 90vh; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── HEADER ── -->
+<header>
+  <h1>Мой<span>Сайт</span></h1>
+  <nav>
+    <a href="#about">О нас</a>
+    <a href="#services">Услуги</a>
+    <a href="#contact">Контакты</a>
+  </nav>
+</header>
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <h2>Добро пожаловать<br>на сайт</h2>
+  <p>Современный, красивый и адаптивный сайт для вашего бизнеса, портфолио или проекта.</p>
+  <div>
+    <button class="btn" onclick="showMessage()">Начать сейчас</button>
+    <button class="btn btn-outline" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">Узнать больше</button>
+  </div>
+</section>
+
+<!-- ── ABOUT ── -->
+<section class="section" id="about">
+  <div class="section-label">О компании</div>
+  <h3>Почему выбирают нас</h3>
+  <div class="cards">
+    <div class="card">
+      <div class="card-icon" style="background:#dbeafe">✨</div>
+      <h4>Качество</h4>
+      <p>Создаём удобные и стильные сайты, которые хорошо выглядят на любых устройствах.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon" style="background:#dcfce7">⚡</div>
+      <h4>Скорость</h4>
+      <p>Оптимизированная структура и быстрый запуск без лишней сложности.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon" style="background:#fae8ff">🛡️</div>
+      <h4>Поддержка</h4>
+      <p>Код легко расширять и дорабатывать под ваши задачи.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── SERVICES ── -->
+<section class="section" id="services">
+  <div class="section-label">Услуги</div>
+  <h3>Что мы делаем</h3>
+  <div class="cards">
+    <div class="card">
+      <div class="card-icon" style="background:#fff7ed">🚀</div>
+      <h4>Лендинг</h4>
+      <p>Продающая одностраничная структура для товара или услуги.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon" style="background:#f0fdf4">🎨</div>
+      <h4>Портфолио</h4>
+      <p>Персональный сайт для дизайнера, разработчика или фотографа.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon" style="background:#eff6ff">🏢</div>
+      <h4>Корпоративный сайт</h4>
+      <p>Представление компании, услуг, контактов и формы обратной связи.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── CONTACT ── -->
+<section class="section contact" id="contact">
+  <div class="section-label">Связаться</div>
+  <h3>Контакты</h3>
+  <p>Свяжитесь с нами для обсуждения вашего проекта. Ответим в течение 24 часов.</p>
+  <button class="btn btn-dark" onclick="scrollToTop()">↑ Наверх</button>
+</section>
+
+<footer>
+  <p>© 2026 МойСайт. Все права защищены.</p>
+</footer>
+
+<!-- ── ADMIN BUTTON ── -->
+<button id="adminBtn" title="Администратор" onclick="openAdmin()">⚙️</button>
+
+<!-- ── ADMIN MODAL ── -->
+<div id="adminModal">
+  <div id="adminPanel">
+
+    <!-- Login -->
+    <div id="loginScreen">
+      <div style="font-size:40px">🔐</div>
+      <h3>Панель администратора</h3>
+      <p>Введите пароль для просмотра IP-адресов посетителей</p>
+      <input id="pwdInput" type="password" placeholder="••••••••"
+             onkeydown="if(event.key==='Enter') login()">
+      <button id="loginBtn" onclick="login()">Войти</button>
+      <div id="loginErr">Неверный пароль</div>
+      <button onclick="closeAdmin()" style="background:none;border:none;color:#475569;cursor:pointer;font-size:13px;margin-top:8px">Отмена</button>
+    </div>
+
+    <!-- Dashboard (hidden until login) -->
+    <div id="dashboard" style="display:none;flex-direction:column;height:100%">
+      <div class="panel-header">
+        <h2>
+          <div class="live-dot"></div>
+          IP-адреса посетителей
+        </h2>
+        <button id="closePanel" onclick="closeAdmin()">✕</button>
+      </div>
+
+      <div class="panel-toolbar">
+        <button class="active" onclick="loadVisits()">🔄 Обновить</button>
+        <button onclick="clearVisits()">🗑 Очистить</button>
+        <button onclick="exportCSV()">⬇ Экспорт CSV</button>
+        <div id="visitCount">Загрузка… <span id="cnt">—</span></div>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>IP-адрес</th>
+              <th>Страна / Город</th>
+              <th>Провайдер</th>
+              <th>Время</th>
+            </tr>
+          </thead>
+          <tbody id="visitsBody">
+            <tr>
+              <td colspan="5">
+                <div class="empty-state">
+                  <div class="icon">🌐</div>
+                  Загрузка данных…
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  /* ══════════════════════════════════════
+     КОНФИГУРАЦИЯ — измените под себя
+  ══════════════════════════════════════ */
+  const ADMIN_PASSWORD = 'admin123';   // ← пароль админа
+  const STORAGE_KEY    = 'site_visits';
+
+  /* ──────────────────────────────────────
+     Сбор IP при загрузке страницы
+  ────────────────────────────────────── */
+  async function recordVisit() {
+    const APIs = [
+      () => fetch('https://freeipapi.com/api/json').then(r => r.json()).then(d => ({
+        ip: d.ipAddress, country: d.countryName, city: d.cityName,
+        org: d.isp || '—', code: d.countryCode
+      })),
+      () => fetch('https://ipwho.is/').then(r => r.json()).then(d => ({
+        ip: d.ip, country: d.country, city: d.city,
+        org: d.connection?.org || '—', code: d.country_code
+      })),
+      () => fetch('https://api.country.is/').then(r => r.json()).then(d => ({
+        ip: d.ip, country: d.country, city: '—', org: '—', code: d.country
+      }))
+    ];
+
+    let visit = null;
+
+    for (const api of APIs) {
+      try {
+        const data = await api();
+        visit = {
+          ip      : data.ip      || 'Неизвестно',
+          country : data.country || '—',
+          city    : data.city    || '—',
+          org     : data.org     || '—',
+          flag    : data.code    ? getFlagEmoji(data.code) : '🌐',
+          time    : new Date().toLocaleString('ru-RU')
+        };
+        break; // успех — выходим из цикла
+      } catch (_) { /* пробуем следующий */ }
+    }
+
+    // Если все API недоступны — записываем без IP
+    if (!visit) {
+      visit = { ip: 'Недоступно (локально)', country: '—', city: '—', org: '—', flag: '🌐', time: new Date().toLocaleString('ru-RU') };
+    }
+
+    const visits = getVisits();
+    visits.unshift(visit);
+    if (visits.length > 500) visits.pop();
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(visits));
+  }
+
+  function getVisits() {
+    try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || []; }
+    catch { return []; }
+  }
+
+  function getFlagEmoji(countryCode) {
+    return countryCode
+      .toUpperCase()
+      .replace(/./g, c => String.fromCodePoint(127397 + c.charCodeAt()));
+  }
+
+  /* ──────────────────────────────────────
+     Панель администратора
+  ────────────────────────────────────── */
+  let authenticated = false;
+
+  function openAdmin() {
+    document.getElementById('adminModal').classList.add('open');
+    if (!authenticated) {
+      document.getElementById('pwdInput').focus();
+    }
+  }
+
+  function closeAdmin() {
+    document.getElementById('adminModal').classList.remove('open');
+  }
+
+  // Закрытие по клику вне панели
+  document.getElementById('adminModal').addEventListener('click', function(e) {
+    if (e.target === this) closeAdmin();
+  });
+
+  function login() {
+    const pwd = document.getElementById('pwdInput').value;
+    if (pwd === ADMIN_PASSWORD) {
+      authenticated = true;
+      document.getElementById('loginScreen').style.display = 'none';
+      document.getElementById('dashboard').style.display   = 'flex';
+      loadVisits();
+    } else {
+      document.getElementById('loginErr').style.display = 'block';
+      document.getElementById('pwdInput').value = '';
+      document.getElementById('pwdInput').focus();
+    }
+  }
+
+  function loadVisits() {
+    const visits = getVisits();
+    const tbody  = document.getElementById('visitsBody');
+    document.getElementById('cnt').textContent = visits.length + ' визитов';
+
+    if (visits.length === 0) {
+      tbody.innerHTML = `
+        <tr><td colspan="5">
+          <div class="empty-state">
+            <div class="icon">📭</div>
+            Пока нет посещений. Откройте сайт в другой вкладке.
+          </div>
+        </td></tr>`;
+      return;
+    }
+
+    tbody.innerHTML = visits.map((v, i) => `
+      <tr>
+        <td style="color:#475569">${i + 1}</td>
+        <td><span class="ip-badge">${escHtml(v.ip)}</span></td>
+        <td><span class="country-flag">${v.flag}</span>${escHtml(v.country)}, ${escHtml(v.city)}</td>
+        <td style="color:#64748b;max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${escHtml(v.org)}</td>
+        <td style="color:#475569;white-space:nowrap">${escHtml(v.time)}</td>
+      </tr>`).join('');
+  }
+
+  function clearVisits() {
+    if (!confirm('Удалить все записи о посещениях?')) return;
+    localStorage.removeItem(STORAGE_KEY);
+    loadVisits();
+  }
+
+  function exportCSV() {
+    const visits = getVisits();
+    if (!visits.length) { alert('Нет данных для экспорта.'); return; }
+
+    const header = ['#', 'IP', 'Страна', 'Город', 'Провайдер', 'Время'];
+    const rows   = visits.map((v, i) =>
+      [i+1, v.ip, v.country, v.city, v.org, v.time].map(s => `"${String(s).replace(/"/g,'""')}"`).join(',')
+    );
+
+    const csv  = [header.join(','), ...rows].join('\n');
+    const blob = new Blob(['\uFEFF' + csv], { type: 'text/csv;charset=utf-8;' });
+    const url  = URL.createObjectURL(blob);
+    const a    = document.createElement('a');
+    a.href = url; a.download = 'visits.csv'; a.click();
+    URL.revokeObjectURL(url);
+  }
+
+  function escHtml(s) {
+    return String(s)
+      .replace(/&/g,'&amp;').replace(/</g,'&lt;')
+      .replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+
+  /* ──────────────────────────────────────
+     Прочие функции сайта
+  ────────────────────────────────────── */
+  function showMessage() {
+    alert('Спасибо за интерес! Свяжитесь с нами ниже.');
+  }
+
+  function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  // Запускаем запись визита
+  recordVisit();
+</script>
+</body>
+</html>
